@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import mongoose from 'mongoose';
+
 import User from '../app/models/User';
 import File from '../app/models/File';
 import Appointment from '../app/models/Appointment';
@@ -23,10 +24,14 @@ class Database {
   }
 
   mongo() {
-    this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useFindAndModify: true,
-    });
+    this.mongoConnection = mongoose.connect(
+      'mongodb+srv://gorbarber:gobarbergus@cluster0-6nkoz.mongodb.net/test?retryWrites=true&w=majority',
+      {
+        useNewUrlParser: true,
+        useFindAndModify: true,
+        useUnifiedTopology: true,
+      }
+    );
   }
 }
 
